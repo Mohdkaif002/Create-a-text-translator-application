@@ -1,7 +1,15 @@
 function Footer() {
   return (
-    <footer className="mt-10 bg-gray-800 px-6 py-4 text-center text-white">
-      <p>© 2026 Utility Hub. All rights reserved.</p>
+    <footer className="border-t bg-gray-900 px-4 py-5 text-center text-sm text-gray-300">
+
+      <p>
+        © 2026 TranslateHub. All rights reserved.
+      </p>
+
+      <p className="mt-1 text-xs text-gray-500">
+        Simple & Fast Translation Platform
+      </p>
+
     </footer>
   )
 }
