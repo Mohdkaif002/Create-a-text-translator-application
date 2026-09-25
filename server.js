@@ -150,11 +150,15 @@ app.post('/api/login', async (req, res) => {
   try {
     const { email, password } = req.body
 
-    console.log('🔐 Login Request:', email)
+    console.log(
+      '🔐 Login Request:',
+      email
+    )
 
     if (!email?.trim() || !password) {
       return res.status(400).json({
-        error: 'Email and password are required.',
+        error:
+          'Email and password are required.',
       })
     }
 
@@ -164,7 +168,8 @@ app.post('/api/login', async (req, res) => {
 
     if (!user) {
       return res.status(401).json({
-        error: 'Invalid email or password.',
+        error:
+          'Invalid email or password.',
       })
     }
 
@@ -176,7 +181,8 @@ app.post('/api/login', async (req, res) => {
 
     if (!isPasswordCorrect) {
       return res.status(401).json({
-        error: 'Invalid email or password.',
+        error:
+          'Invalid email or password.',
       })
     }
 
@@ -194,7 +200,10 @@ app.post('/api/login', async (req, res) => {
       },
     })
   } catch (error) {
-    console.error('❌ Login Error:', error)
+    console.error(
+      '❌ Login Error:',
+      error
+    )
 
     res.status(500).json({
       error:
@@ -210,7 +219,8 @@ app.post('/api/login', async (req, res) => {
 
 app.get('/', (req, res) => {
   res.json({
-    message: 'TranslateHub AI Backend is running!',
+    message:
+      'TranslateHub AI Backend is running!',
   })
 })
 
@@ -300,7 +310,9 @@ ${text}`,
       result,
     })
   } catch (error) {
-    console.error('❌ Gemini Error:')
+    console.error(
+      '❌ Gemini Error:'
+    )
     console.error(error)
 
     res.status(500).json({
@@ -588,7 +600,9 @@ ${text}
       questions: quizData.questions,
     })
   } catch (error) {
-    console.error('❌ Quiz Error:')
+    console.error(
+      '❌ Quiz Error:'
+    )
     console.error(error)
 
     res.status(500).json({
@@ -603,8 +617,10 @@ ${text}
 // START SERVER
 // ==========================================
 
-app.listen(5000, () => {
+// 0.0.0.0 allows Android phone on the same Wi-Fi
+// to access this backend using the PC's LAN IP.
+app.listen(5000, '0.0.0.0', () => {
   console.log(
-    '🚀 AI Backend running on http://localhost:5000'
+    '🚀 AI Backend running on http://0.0.0.0:5000'
   )
 })
